@@ -34,8 +34,8 @@ require('../../rq/catmod.php');
                 <select v-model="idCategoria" id="label1" class="form-control" name="id_categoria" required>
                     <option disabled value="">Seleccione una Categoria</option>
                     <?php while ($rows1 = mysqli_fetch_array($res1)) : ?>
-                            <option value="<?php echo $rows1['Nombre_Cat'] ?>"><?php echo $rows1['Nombre_Cat'] ?></option>
-                        <?php endwhile ?>
+                        <option value="<?php echo $rows1['Nombre_Cat'] ?>"><?php echo $rows1['Nombre_Cat'] ?></option>
+                    <?php endwhile ?>
                 </select>
             </div>
             <div class="col"><label style="display: block; text-align:right; width: 100%; height: calc(2.25rem + 2px); padding: 0.375rem 0.75rem; font-size: 1rem;" for="label2">Proveedor del Producto</label></div>
@@ -43,8 +43,8 @@ require('../../rq/catmod.php');
                 <select v-model="proveedor" id="label2" class="form-control" name="proveedor" required>
                     <option disabled value="">Seleccione un Proveedor</option>
                     <?php while ($rows2 = mysqli_fetch_array($res2)) : ?>
-                            <option value="<?php echo $rows2['Nombre_Prov'] ?>"><?php echo $rows2['Nombre_Prov'] ?></option>
-                        <?php endwhile ?>
+                        <option value="<?php echo $rows2['Nombre_Prov'] ?>"><?php echo $rows2['Nombre_Prov'] ?></option>
+                    <?php endwhile ?>
                 </select>
             </div>
         </div>
@@ -95,6 +95,8 @@ require('../../rq/catmod.php');
                         data: formulario
                     }).then(function(respuesta) { //Respuesta del servidor
                         console.log(respuesta);
+                        alert(respuesta.data.msg);
+                        // this.mostrarMsg = true;
                     }).catcht(function() {
                         console.log(error);
                     })

@@ -1,6 +1,6 @@
 <?php
 require('../../../../datos/conexion.php');
-if ($_SERVER['REQUEST_METHOD']==='POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_proveedor = $_POST['idProv'];
     $nombre = $_POST['nombre'];
     $direccion = $_POST['direccion'];
@@ -9,10 +9,15 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     $sql = "INSERT INTO proveedores(Id_Proveedor,Nombre_Prov,Direccion,Email,Telefonos)
         VALUES('$id_proveedor','$nombre','$direccion','$email','$telefonos')";
 
-    if ($conexion->query($sql) === true) {
-        echo "<br>Proveedor añadido Correctamente";
+    if ($conexion->query($sql) === TRUE) {
+        $respuesta['msg'] = 'Registro guardado';
+        $respuesta['exito'] = true;
     } else {
-        die("Error al insertar datos: " . $conexion->error);
+        $respuesta['error'] = '' . $conexion->error;
+        $respuesta['msg'] = 'Registro no guardado';
     }
+
+    $conexion->close();
+    echo json_encode($respuesta);
+    die();
 }
-      ?>

@@ -56,7 +56,7 @@ require('../../rq/climod.php');
         nombres: '',
         apellidos: '',
         telefonos: '',
-        direccion: ''
+        direccion: '',
         // }
       },
       mounted() { //Se lanza cada vez que se recarga la pagina
@@ -80,6 +80,7 @@ require('../../rq/climod.php');
             data: formulario
           }).then(function(respuesta) { //Respuesta del servidor
             console.log(respuesta);
+            alert(respuesta.data.msg);
           }).catcht(function() {
             console.log(error);
           })

@@ -60,6 +60,8 @@ require('../../rq/provmod.php');
                         data: formulario
                     }).then(function(respuesta) { //Respuesta del servidor
                         console.log(respuesta);
+                        alert(respuesta.data.msg);
+                        // this.mostrarMsg = true;
                     }).catcht(function() {
                         console.log(error);
                     })
@@ -70,25 +72,25 @@ require('../../rq/provmod.php');
     </script>
 </div>
 <div class="container mt-5">
-  <table class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">ID Proveedor</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Direccion</th>
-        <th scope="col">Email</th>
-        <th scope="col">Telefonos</th>
-      </tr>
-    </thead>
-    <?php
-    if ($row = mysqli_fetch_array($resultset)) {
-      echo '<br>';
-      do {
-        echo "<tbody><tr><th scope='row'>" . $row["Id_Proveedor"] . "</th><td>" . $row["Nombre_Prov"] . "</td><td>" . $row["Direccion"] . "</td><td>" . $row["Email"] . "</td><td>" . $row["Telefonos"] . "</td></tr>";
-      } while ($row = mysqli_fetch_array($resultset));
-      echo "<br>";
-    } else {
-      echo "</table><div class='alert alert-warning' role='alert'> No se encontraron registros </div>";
-    }
-    ?>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID Proveedor</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefonos</th>
+            </tr>
+        </thead>
+        <?php
+        if ($row = mysqli_fetch_array($resultset)) {
+            echo '<br>';
+            do {
+                echo "<tbody><tr><th scope='row'>" . $row["Id_Proveedor"] . "</th><td>" . $row["Nombre_Prov"] . "</td><td>" . $row["Direccion"] . "</td><td>" . $row["Email"] . "</td><td>" . $row["Telefonos"] . "</td></tr>";
+            } while ($row = mysqli_fetch_array($resultset));
+            echo "<br>";
+        } else {
+            echo "</table><div class='alert alert-warning' role='alert'> No se encontraron registros </div>";
+        }
+        ?>
 </div>
